@@ -1,0 +1,35 @@
+    public void InsertarElemento(int pos, int valor)
+    {
+        if(pos == this.longitud)
+        {
+            this.Elementos[pos] = this.Elementos[pos - 1];
+            this.Elementos[pos - 1] = valor;
+            this.longitud++;
+            return;
+        }
+        else
+        {
+            int valor_aux = Elementos[this.longitud - 1];
+            this.longitud--;
+            InsertarElemento(pos, valor);
+            this.longitud++;
+            this.Elementos[this.longitud - 1] = valor_aux;
+        }
+    }
+
+    public void EliminarElemento(int pos)
+    {
+        if (pos == this.longitud)
+        {
+            this.Elementos[pos - 1] = this.Elementos[pos];
+            this.longitud--;
+            return;
+        }
+        else
+        {
+            this.longitud--;
+            EliminarElemento(pos);
+            this.longitud++;
+            this.Elementos[this.longitud] = this.Elementos[this.longitud+1];
+        }
+    }

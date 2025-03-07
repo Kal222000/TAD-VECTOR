@@ -1,0 +1,16 @@
+public void Insertion_Sort()
+{
+    int pos, aux;
+    for (int i = 0; i < this.longitud; i++)
+    {
+        pos = i;
+        aux = Elementos[i];
+        while(pos > 0 && this.Elementos[pos] < this.Elementos[pos - 1])
+        {
+            this.Elementos[pos] = this.Elementos[pos - 1];
+            this.Elementos[pos - 1] = aux;
+            aux = this.Elementos[pos - 1];
+            pos--;
+        }
+    }
+}

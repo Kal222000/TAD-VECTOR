@@ -1,0 +1,67 @@
+public bool Comparar(Vector vec)
+{
+    if(this.longitud != vec.Obtener_Longitud())
+    {
+        return false;
+    }
+    else
+    {
+        for(int i = 0; i < this.longitud; i++)
+        {
+            if (this.Elementos[i] != vec.Obtener_Elemento(i+1))
+            { 
+                return false;
+            }
+            else
+            {
+                continue;
+            }
+        }
+        return true;
+    }
+}
+
+public void Union(Vector vec)
+{
+    int[] vec_aux = new int[this.longitud + vec.Obtener_Longitud()];
+    int contador = 0;
+
+    for (int i = 0; i < this.longitud; i++, contador++)
+    {
+        vec_aux[i] = this.Elementos[i];
+        this.Elementos[i] = 0;
+    }
+
+    int auxiliar = 0, longitud_aux = vec.Obtener_Longitud();
+    for(int j = 0; j < longitud_aux; j++)
+    {
+        for(int i = 0; i <= contador; i++)
+        {
+            if (vec_aux[i] == vec.Obtener_Elemento(j+1))
+            {
+                auxiliar++;
+            }
+            else
+            {
+                continue;
+            }
+        }
+
+        if(auxiliar > 0)
+        {
+            auxiliar = 0;
+            continue;
+        }
+        else
+        {
+            vec_aux[contador] = vec.Obtener_Elemento(j + 1);
+            contador++;
+        }
+    }
+
+    this.longitud = contador;
+    for(int i = 0; i < this.longitud; i++)
+    {
+        this.Elementos[i] = vec_aux[i];
+    }
+}

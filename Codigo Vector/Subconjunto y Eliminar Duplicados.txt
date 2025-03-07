@@ -1,0 +1,67 @@
+    public bool Subconjunto(Vector vec)
+    {
+        int verificador = 0, j = 0;
+        for(int i = 0; i <= this.longitud; i++)
+        {
+            if(verificador == vec.Obtener_Longitud())
+            {
+                return true;
+            }
+            else
+            {
+                if ((vec.Obtener_Elemento(i+1) == this.Elementos[i]) && i < this.longitud)
+                {
+                    verificador++;
+                    j++;
+                }
+                else
+                {
+                    j = 0;
+                    verificador = 0;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public void EliminarDuplicados()
+    {
+        Dictionary<int, int> mapa = new Dictionary<int, int>();
+        int verificador = 0, pos = 0;
+        for(int i = 0; i < this.longitud; i++)
+        {
+            for(int j = 0; j < mapa.Count; j++)
+            {
+                if (mapa[j] == this.Elementos[i])
+                {
+                    verificador++;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+
+            if (verificador > 0)
+            {
+                this.Elementos[i] = 0;
+                verificador = 0;
+                continue;
+            }
+            else
+            {
+                mapa[pos] = this.Elementos[i];
+                this.Elementos[i] = 0;
+                pos++;
+            }
+        }
+
+        for(int i = 0; i < pos; i++)
+        {
+            this.Elementos[i] = mapa[i];
+        }
+
+        this.longitud = pos;
+    }
+}

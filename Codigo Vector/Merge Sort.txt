@@ -1,0 +1,89 @@
+    public void Merge_Sort_Llamada_Funcion()
+    {
+        int[] vector_aux = new int[this.longitud];
+        for (int i = 0; i < this.longitud; i++)
+        {
+            vector_aux[i] = this.Elementos[i];
+        }
+
+        vector_aux = Merge_Sort(vector_aux);
+
+        for (int i = 0; i < this.longitud; i++)
+        {
+            this.Elementos[i] = vector_aux[i];
+        }
+    }
+
+    private int[] Merge_Sort(int[] vec)
+    {
+        if (vec.Length <= 1)
+        {
+            return vec;
+        }
+        else
+        {
+            int middle = vec.Length / 2;
+            int[] vec1 = new int[middle];
+            int[] vec2 = new int[vec.Length - middle];
+            for (int i = 0; i < middle; i++)
+            {
+                vec1[i] = vec[i];
+            }
+            int j = 0;
+            for (int i = middle; i < vec.Length; i++)
+            {
+                vec2[j] = vec[i];
+                j++;
+            }
+            vec1 = Merge_Sort(vec1);
+            vec2 = Merge_Sort(vec2);
+            return Merge(vec1, vec2);
+        }
+    }
+
+    private int[] Merge(int[] array1, int[] array2)
+    {
+        int[] array3 = new int[array1.Length + array2.Length];
+        int i, j, l;
+        i = 0;
+        j = 0;
+        l = 0;
+        while (i < array1.Length && j < array2.Length)
+        {
+            if (i < array1.Length && array1[i] < array2[j])
+            {
+                array3[l] = array1[i];
+                i++;
+                l++;
+            }
+            else
+            {
+                array3[l] = array2[j];
+                j++;
+                l++;
+            }
+        }
+
+        while (i < array1.Length)
+        {
+            array3[l] = array1[i];
+            i++;
+            l++;
+        }
+
+        while (j < array2.Length)
+        {
+            array3[l] = array2[j];
+            l++;
+            j++;
+        }
+
+        return array3;
+    }
+
+    /*La razón por la cual hay 3 funciones de merge es debido a que:
+     - Merge_Sort_Llamada_Funcion lo que hace es crear un vector debido a que
+       no pasaremos un vector de 1000 elemntos, sino la longitud que utilizamos.
+     - Merge_Sort es la función o metodo que utiliza la recursividad;
+     - Merge es la función que devuelve el vector ordenado.
+     */
