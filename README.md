@@ -3,7 +3,7 @@
 Subí dos carpetas:
 En la carpeta Tarea 1 se encuentra todo el proyecto de consola, el código completo con todas las funciones esta en class 1 y en Program las entradas.
 
-En la carpeta Codigo Vector se encuentra todo el código pero en txt y si desea ver las funciones en especifico, se encunetran separados en distintos txt las funciones de ordenamiento y las 6 funciones extras que nos dió se encunetran separadas en pares (2 funciones en un txt).
+En la carpeta Codigo Vector se encuentra todo el código pero en txt y si desea ver las funciones en especifico, se encuentran separados en distintos txt las funciones de ordenamiento y las 6 funciones extras que nos dió se encuentran separadas en pares (2 funciones en un txt).
 
 Extra: 
 - Al crear la clase vector se debe tomar en cuenta la longitud que usara y que no supere la cantidad de 1000
